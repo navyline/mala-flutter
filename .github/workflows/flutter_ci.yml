@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create .env file from GitHub Secrets
+        run: echo "API_URL=${{ secrets.API_URL }}" >> .env
+
       - name: Analyze project
         run: flutter analyze
 
