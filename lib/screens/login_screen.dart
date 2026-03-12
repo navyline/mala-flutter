@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/api_service.dart';
 import 'home_screen.dart';
+import 'register_screen.dart';
 
 /// [LoginScreen] provides a user interface for member authentication.
 /// It utilizes phone-based login and manages session tokens.
@@ -112,6 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 _buildPhoneInput(),
                 const SizedBox(height: 32),
                 _buildLoginButton(),
+                const SizedBox(height: 16),
+                _buildRegisterButton(),
               ],
             ),
           ),
@@ -177,6 +180,40 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+                ),
+              ),
+      ),
+    );
+  }
+
+  Widget _buildRegisterButton() {
+    return SizedBox(
+      width: double.infinity,
+      height: 56,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const RegisterScreen()),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          side: const BorderSide(
+            color: Colors.black26,
+          ), // Subtle outline for emphasis
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: _isLoading
+            ? const CircularProgressIndicator(color: Colors.white)
+            : const Text(
+                'สมัครสมาชิก',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
                 ),
               ),
       ),
