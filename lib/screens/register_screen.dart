@@ -55,8 +55,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         }
       } else {
-        if (mounted)
+        if (mounted) {
           _showErrorSnackBar(data['message'] ?? 'การสมัครสมาชิกล้มเหลว');
+        }
       }
     } catch (e) {
       if (mounted) _showErrorSnackBar('เกิดข้อผิดพลาดในการเชื่อมต่อ');
